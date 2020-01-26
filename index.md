@@ -1,6 +1,14 @@
 ---
-layout: default
+layout: leafletPage
 ---
+	#Web mapping demo
+	<div id="mapid"></div>
+		<script>
+		var mymap = L.map('mapid').setView([54.7767, -1.5749], 14); 
+		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+		}).addTo(mymap);
+	</script>
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
