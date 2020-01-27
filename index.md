@@ -64,7 +64,7 @@ This is a normal paragraph following a header. GitHub is a code hosting platform
 <style>.embed-container {position: relative; padding-bottom: 60%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="1000" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Philadelphia running" src="//www.arcgis.com/apps/Embed/index.html?webmap=7e06039a1148436b9bb29b9ed1d75a5c&extent=-75.2222,39.9003,-75.1211,39.9433&zoom=true&previewImage=false&scale=true&legend=true&disable_scroll=true&theme=light"></iframe></div>	
 
 ## And finally, this is a map rendered in D3.
-<div>
+<div id="d3div"></div>
 <script>
 
 var width = 960,
@@ -78,7 +78,7 @@ var projection = d3.geo.albersUsa()
 var path = d3.geo.path()
     .projection(projection);
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("d3div").append("svg")
     .attr("width", width)
     .attr("height", height);
 
@@ -137,7 +137,6 @@ function reset() {
 }
 
 </script>
-</div>
 #### Header 4
 
 *   This is an unordered list following a header.
