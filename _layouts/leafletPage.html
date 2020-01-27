@@ -11,13 +11,36 @@
    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
    crossorigin=""/>
    
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
    
+	<script src="//d3js.org/d3.v3.min.js"></script>
+	<script src="//d3js.org/topojson.v1.min.js"></script>
+   
 
 	<style>
-		#mapid { height: 600px; width: 1000px; }
+		#mapid { height: 600px; width: 1000px; max-width: 100%}
+		.background {
+			fill: none;
+			pointer-events: all;
+		}
+
+		.feature {
+		  fill: #ccc;
+		  cursor: pointer;
+		}
+
+		.feature.active {
+		  fill: orange;
+		}
+
+		.mesh {
+		  fill: none;
+		  stroke: #fff;
+		  stroke-linecap: round;
+		  stroke-linejoin: round;
+		}
 	</style>
 {% seo %}
   </head>

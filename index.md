@@ -61,24 +61,82 @@ This is a normal paragraph following a header. GitHub is a code hosting platform
 
 ## This next map is an Esri Online map
 
-<style>.embed-container {position: relative; padding-bottom: 60%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="1000" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Philadelphia running" src="//www.arcgis.com/apps/Embed/index.html?webmap=7e06039a1148436b9bb29b9ed1d75a5c&extent=-75.2222,39.9003,-75.1211,39.9433&zoom=true&previewImage=false&scale=true&disable_scroll=true&theme=light"></iframe></div>
+<style>.embed-container {position: relative; padding-bottom: 60%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="1000" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Philadelphia running" src="//www.arcgis.com/apps/Embed/index.html?webmap=7e06039a1148436b9bb29b9ed1d75a5c&extent=-75.2222,39.9003,-75.1211,39.9433&zoom=true&previewImage=false&scale=true&legend=true&disable_scroll=true&theme=light"></iframe></div>	
 
-### Header 3
+## And finally, this is a map rendered in D3.
 
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
+<script>
+
+var width = 960,
+    height = 500,
+    active = d3.select(null);
+
+var projection = d3.geo.albersUsa()
+    .scale(1000)
+    .translate([width / 2, height / 2]);
+
+var path = d3.geo.path()
+    .projection(projection);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+svg.append("rect")
+    .attr("class", "background")
+    .attr("width", width)
+    .attr("height", height)
+    .on("click", reset);
+
+var g = svg.append("g")
+    .style("stroke-width", "1.5px");
+
+d3.json("./us.json", function(error, us) {
+  if (error) throw error;
+
+  g.selectAll("path")
+      .data(topojson.feature(us, us.objects.states).features)
+    .enter().append("path")
+      .attr("d", path)
+      .attr("class", "feature")
+      .on("click", clicked);
+
+  g.append("path")
+      .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
+      .attr("class", "mesh")
+      .attr("d", path);
+});
+
+function clicked(d) {
+  if (active.node() === this) return reset();
+  active.classed("active", false);
+  active = d3.select(this).classed("active", true);
+
+  var bounds = path.bounds(d),
+      dx = bounds[1][0] - bounds[0][0],
+      dy = bounds[1][1] - bounds[0][1],
+      x = (bounds[0][0] + bounds[1][0]) / 2,
+      y = (bounds[0][1] + bounds[1][1]) / 2,
+      scale = .9 / Math.max(dx / width, dy / height),
+      translate = [width / 2 - scale * x, height / 2 - scale * y];
+
+  g.transition()
+      .duration(750)
+      .style("stroke-width", 1.5 / scale + "px")
+      .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
 }
-```
 
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
+function reset() {
+  active.classed("active", false);
+  active = d3.select(null);
+
+  g.transition()
+      .duration(750)
+      .style("stroke-width", "1.5px")
+      .attr("transform", "");
+}
+
+</script>
 
 #### Header 4
 
