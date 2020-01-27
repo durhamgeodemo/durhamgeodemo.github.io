@@ -6,13 +6,11 @@ Visit Dr. Burns's personal website [here](http://burnsr77.github.io/), if you'd 
 
 # Web mapping demo
 
+
+## This first map is an example of an open JavaScript library called Leaflet, which is very easy to use.
+
 <div id="mapid"></div>
 <script>
-	//OpenStreetMap base layer
-	var osm_base = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-	});
-
 	//Mapbox base layer
 	var mapbox_base = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
 		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -20,6 +18,12 @@ Visit Dr. Burns's personal website [here](http://burnsr77.github.io/), if you'd 
 		accessToken: 'pk.eyJ1IjoiYnVybnNyNzciLCJhIjoiY2lqYWgyZzJ3MDA5enU5bHhndDl0OGk3ZiJ9.E60cOEL952IkbYp44iPDaw'
 	});	
 	
+	//OpenStreetMap base layer
+	var osm_base = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+		attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+	});
+
+
 	//Stamen base layer
 	var STL = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
 		attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -55,11 +59,9 @@ Visit Dr. Burns's personal website [here](http://burnsr77.github.io/), if you'd 
 
 This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
 
-## Header 2
+## This next map is an Esri Online map
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
+<style>.embed-container {position: relative; padding-bottom: 60%; height: 0; max-width: 100%;} .embed-container iframe, .embed-container object, .embed-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%;} small{position: absolute; z-index: 40; bottom: 0; margin-bottom: -15px;}</style><div class="embed-container"><iframe width="1000" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Philadelphia running" src="//www.arcgis.com/apps/Embed/index.html?webmap=7e06039a1148436b9bb29b9ed1d75a5c&extent=-75.2222,39.9003,-75.1211,39.9433&zoom=true&previewImage=false&scale=true&disable_scroll=true&theme=light"></iframe></div>
 
 ### Header 3
 
