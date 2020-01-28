@@ -44,7 +44,7 @@ Leaflet is free to use, and quick to set up. It's a very powerful library with l
 	var mymap = L.map('mapid', {
 		center: [54.7767, -1.5749], 
 		zoom: 14,
-		layers: [mapbox_base, osm_base]
+		layers: [osm_base, mapbox_base]
 	});
 
 
