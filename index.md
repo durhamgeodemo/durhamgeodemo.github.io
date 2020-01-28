@@ -79,9 +79,9 @@ Below, I'm visualizing my volunteered running data that I created with the Runke
 
 ## And finally, this is a map rendered in D3.
 
-D3 is more like Leaflet than Esri Online. It's an information visualization library broadly conceived, with some spatial capabilities. Since it's made for many purposes rather than focussed simply on mapping, its syntax is a bit more challenging than Leaflet. At the same time, it's been designed with aesthetics in mind, and in some ways its maps are "prettier". It's also far more powerful than Leaflet, because you can design topological maps divorced from Euclidean geometries, you can interact with different projections or map shapes (some maps are 2D renderings of 3D models!), and you can more efficiently display large datasets.
+D3 is more like Leaflet than Esri Online. It's an information visualization library broadly conceived, with some spatial capabilities. Since it's made for many purposes rather than focussed simply on mapping, its syntax is a bit more challenging than Leaflet. At the same time, it's been designed with aesthetics in mind, and in some ways its maps are "prettier". It's also far more powerful than Leaflet, because you can design topological maps divorced from Euclidean geometries, you can interact with different projections or map shapes (some maps are 2D renderings of 3D models!), and you can more efficiently display large datasets. D3 uses a display format called "svg", a vector format (remember your GIS modules?) that plays well with the latest HTML 5 format - what this means is that it is highly interactive when combined with JavaScript. Its interactivity also means that it enables far more representational capacity than Leaflet, enabling you to think more outside of the traditional map format you're used to seeing and that you saw in the two examples above.
 
-Below, click on individual states to zoom to its "bounding box" - the extent of its coordinates. *To be transparent, I merely adapted the below example from user mbostock; I did not originate it as I did the above examples.*
+Below, click on individual states to zoom to its "bounding box" - the extent of its coordinates. *To be completely transparent, I merely adapted the below example from user mbostock; I did not originate it as I did the above examples.*
 
 <div id="d3div"></div>
 <script>
